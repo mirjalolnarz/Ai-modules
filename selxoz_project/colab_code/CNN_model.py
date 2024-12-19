@@ -78,14 +78,14 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = model.to(device)
 
 # Saqlangan og'irliklarni yuklash
-model.load_state_dict(torch.load(r'C:\Users\mirja\DjangoAPI\selxoz_project\colab_code\best_checkpoint.model'))
+model.load_state_dict(torch.load(r'C:\Users\mirja\myenv\DjangoAPI\selxoz_project\colab_code\best_checkpoint.model'))
 model.eval()  # Modelni baholash rejimiga o'tkazish
 print("Model yuklandi va baholash rejimida!")
 
 from PIL import Image
 
 # Tasvirni yuklash va transformatsiya qilish
-image_path = r'C:\Users\mirja\DjangoAPI\selxoz_project\v\Tomato___Target_Spot\0a2de4c5-d688-4f9d-9107-ace1d281c307___Com.G_TgS_FL 7941.JPG'
+image_path = r"C:\Users\mirja\myenv\DjangoAPI\selxoz_project\colab_code\test_images\Bakterienfruchtflecken_Tomate_Blatt_Xanthomonas_vesicatoria.jpg"
 image = Image.open(image_path)
 
 # Transformatsiyani modelga moslashtirish
@@ -106,7 +106,7 @@ output = model(image_tensor)
 _, prediction = torch.max(output.data, 1)
 
 # Sinflarni yuklash
-dataset_path_local = r'C:\Users\mirja\DjangoAPI\selxoz_project\v'
+dataset_path_local = r'C:\Users\mirja\myenv\DjangoAPI\selxoz_project\edited_image'
 classes = sorted([j.name.split('/')[-1] for j in pathlib.Path(dataset_path_local).iterdir()])
 
 # Bashorat qilingan sinfni ko'rsatish
